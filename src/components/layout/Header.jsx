@@ -1,5 +1,5 @@
-import SearchBar from "./SearchBar";
+import Filters from "./Filters";
 
 export default function Header() {
-  return <SearchBar></SearchBar>;
+  return <Filters></Filters>;
 }

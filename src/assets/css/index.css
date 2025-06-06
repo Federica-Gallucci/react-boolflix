@@ -9,3 +9,9 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+.flag {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}

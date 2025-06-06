@@ -1,26 +1,15 @@
-// import { useMovies } from "../../contexts/MoviesContext";
-import axios from "axios";
-import { useEffect } from "react";
-
-import { useMovies } from "../../contexts/MoviesContext";
+import ProductionList from "../productions/ProductionList";
+import { useSearch } from "../../contexts/SearchContext";
 
 export default function Main() {
-  const { movies } = useMovies();
-
+  const { movies, series } = useSearch();
   return (
     <main>
-      <h1>Qui visualizzo a schermo i dati dell'api</h1>
-
-      <ul>
-        {movies.map((movie, i) => (
-          <>
-            <li>{`TITOLO: ${movie.title}`}</li>
-            <li>{`TITOLO ORIGINALE: ${movie.original_title}`}</li>
-            <li>{`LINGUA: ${movie.original_language}`}</li>
-            <li>{`VOTO: ${movie.vote_average}`}</li>
-          </>
-        ))}
-      </ul>
+      <h3>Film trovat:</h3>
+      <ProductionList searchEl={movies} />
+      <hr></hr>
+      <h3>Serie trovate:</h3>
+      <ProductionList series={series} />
     </main>
   );
 }
