@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// flags
 import itFlag from "../assets/img/it.png";
 import usFlag from "../assets/img/us.png";
 import unknowFlag from "../assets/img/unknowFlag.png";
@@ -21,6 +22,13 @@ function SearchProvider({ children }) {
     return unknowFlag;
   };
 
+  const calculateGrade = (grade) => {
+    const parsGrade = parseInt(grade);
+    const newGrade = Math.ceil((parsGrade * 5) / 10).toFixed();
+
+    return newGrade;
+  };
+
   const fetchMovies = () => {
     axios
       .get(`${apiUri}/search/movie?api_key=${apiKey}&query=${query}`)
@@ -29,9 +37,10 @@ function SearchProvider({ children }) {
           id: movie.id,
           title: movie.title,
           originalTitle: movie.original_title,
-          language: getFlagFromLangCode(movie.original_language),
-          languageFlag: itFlag,
-          rating: movie.vote_average,
+          language: movie.original_language,
+          languageFlag: getFlagFromLangCode(movie.original_language),
+          rating: calculateGrade(movie.vote_average),
+          poster: "https://image.tmdb.org/t/p/w342" + movie.poster_path,
         }));
         console.log("Movies:");
         console.log(resultMovies);
@@ -52,7 +61,8 @@ function SearchProvider({ children }) {
           originalTitle: serie.original_name,
           language: serie.original_language,
           languageFlag: getFlagFromLangCode(serie.original_language),
-          rating: serie.vote_average,
+          rating: calculateGrade(serie.vote_average),
+          poster: "https://image.tmdb.org/t/p/w342" + serie.poster_path,
         }));
         console.log("Serie tv");
         console.log(resultSeries);
