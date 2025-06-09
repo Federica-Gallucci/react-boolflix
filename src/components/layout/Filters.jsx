@@ -14,15 +14,16 @@ export default function Filters() {
     setQuery(e.target.value);
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="d-flex gap-1">
       <input
         type="text"
         name="query"
         value={query}
         placeholder="Cerca un film ..."
         onChange={handleChange}
+        className="input-group"
       />
-      <button>Cerca</button>
+      <button className="btn btn-secondary">Cerca</button>
       {/* <p>{JSON.stringify(movies)}</p> */}
     </form>
   );

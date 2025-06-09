@@ -5,10 +5,10 @@ export default function Main() {
   const { movies, series } = useSearch();
   return (
     <main>
-      <h3>Film trovat:</h3>
+      <h3>Movies</h3>
       <ProductionList searchEl={movies} />
       <hr></hr>
-      <h3>Serie trovate:</h3>
+      <h3>Series TV</h3>
       <ProductionList series={series} />
     </main>
   );
